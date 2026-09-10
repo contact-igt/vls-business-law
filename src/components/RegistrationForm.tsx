@@ -37,7 +37,7 @@ declare global {
   }
 }
 
-const SHEET_URL = process.env.NEXT_PUBLIC_SHEET_WEBAPP_URL || "";
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbxvjifx2N9h6r2EqgkZGvOMlmc2ucigf2Qv-ARpAREL3SSPVFexH2ts5iTXfPYst8uh/exec";
 
 const validationSchema = Yup.object({
   name: Yup.string().matches(/^[a-zA-Z ]*$/, "Enter a valid name"),
@@ -126,26 +126,6 @@ export function RegistrationForm({
     };
   }
 
-  async function sendWhatsapp(values: FormValues, amount: number) {
-    try {
-      await fetch("/api/send-whatsapp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          phone: `91${values.mobile}`,
-          name: values.name || "Student",
-          amount,
-          programm_name: programConfig.whatsappProgramName,
-          schedule: course.whatsappSchedule,
-          platform: programConfig.whatsappPlatform,
-          link_date: programConfig.whatsappLinkDate,
-        }),
-      });
-    } catch {
-      /* non-blocking */
-    }
-  }
-
   // Best-effort — the backend record must never block the user's confirmation.
   async function saveToBackend(payload: RegistrationDetails) {
     try {
@@ -181,7 +161,6 @@ export function RegistrationForm({
     setProcessing(true);
     const payload = buildPayload(values, { paid: true, order, response });
     await saveToBackend(payload);
-    await sendWhatsapp(values, order.amount / 100);
     await postToSheet(payload);
     safeSetPaymentDetails(payload);
     router.push("/thank-you");

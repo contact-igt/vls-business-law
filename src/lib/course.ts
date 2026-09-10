@@ -18,10 +18,6 @@ export const programConfig = {
   fee: 499 as number | null,
   originalPrice: null as string | null,
 
-  // WhatsApp "event_remainder" template arguments (used only in paid mode).
-  whatsappProgramName: "DRT & SARFAESI Proceedings — Procedure & Practice masterclass",
-  whatsappPlatform: "Google Meet",
-  whatsappLinkDate: "one day before the session",
 };
 
 export type ProgramConfig = typeof programConfig;
@@ -45,7 +41,6 @@ export function getCourse(now: number) {
     feeText,
     originalPrice: programConfig.originalPrice,
     phone: programConfig.phone,
-    whatsappSchedule: `${programConfig.date} ${programConfig.time}`,
     registrationMode: paid ? "PAID" : open ? "ACTIVE" : "WAITLIST",
     isPaid: paid,
     isOpen: open,

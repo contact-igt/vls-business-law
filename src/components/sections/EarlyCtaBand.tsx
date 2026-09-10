@@ -1,8 +1,11 @@
+"use client";
+
 import { Container } from "../ui/Container";
 import { PrimaryLink } from "../ui/Button";
-import { course } from "@/lib/course";
+import { useCourse } from "@/components/CourseProvider";
 
 export function EarlyCtaBand() {
+  const course = useCourse();
   return (
     <section className="bg-vls-near-black py-6">
       <Container className="flex flex-wrap items-center justify-between gap-5">

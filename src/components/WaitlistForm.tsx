@@ -20,6 +20,7 @@ export function WaitlistForm({
   successBody?: string;
 }) {
   const [errors, setErrors] = useState<Errors>({});
+  const [submitError, setSubmitError] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "done">("idle");
 
   function validate(data: FormData): Errors {
@@ -44,13 +45,19 @@ export function WaitlistForm({
     if (Object.keys(validationErrors).length > 0) return;
 
     setStatus("submitting");
-    await submitWaitlistLead({
-      fullName: String(data.get("fullName")),
-      email: String(data.get("email")),
-      mobile: String(data.get("mobile")),
-    });
-    setStatus("done");
-    form.reset();
+    setSubmitError("");
+    try {
+      await submitWaitlistLead({
+        fullName: String(data.get("fullName")),
+        email: String(data.get("email")),
+        mobile: String(data.get("mobile")),
+      });
+      setStatus("done");
+      form.reset();
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Unable to submit. Please try again.");
+      setStatus("idle");
+    }
   }
 
   if (status === "done") {
@@ -64,6 +71,7 @@ export function WaitlistForm({
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
+      {submitError && <p role="alert" className="text-sm text-vls-red">{submitError}</p>}
       <Field
         id={`${formId}-fullName`}
         name="fullName"

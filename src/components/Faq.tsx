@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { useCourse } from "@/components/CourseProvider";
 
 const FAQS = [
   {
@@ -25,7 +26,7 @@ const FAQS = [
   },
   {
     q: "When is the next class?",
-    a: "The next live-session details will be announced shortly. Join the waitlist to be notified.",
+    a: "",
   },
   {
     q: "What is the fee?",
@@ -34,6 +35,7 @@ const FAQS = [
 ];
 
 export function Faq() {
+  const course = useCourse();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const baseId = useId();
 
@@ -74,7 +76,7 @@ export function Faq() {
               }`}
             >
               <div className="min-h-0 overflow-hidden" inert={!isOpen}>
-                <p className="pb-5 pr-10 text-[15px] leading-relaxed text-vls-muted">{item.a}</p>
+                <p className="pb-5 pr-10 text-[15px] leading-relaxed text-vls-muted">{item.q === "When is the next class?" ? course.nextClassAnswer : item.a}</p>
               </div>
             </div>
           </div>

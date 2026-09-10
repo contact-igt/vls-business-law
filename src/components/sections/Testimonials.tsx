@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { Container } from "../ui/Container";
 import { Reveal } from "../ui/Reveal";
 import { PrimaryLink } from "../ui/Button";
-import { course } from "@/lib/course";
+import { useCourse } from "@/components/CourseProvider";
 
 const TESTIMONIALS = [
   { src: "/assets/vls/testimonials/testimonial-1.jpg", w: 705, h: 608 },
@@ -20,6 +20,7 @@ const VIDEOS = [
 ];
 
 export function Testimonials() {
+  const course = useCourse();
   const slider = useRef<HTMLDivElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);

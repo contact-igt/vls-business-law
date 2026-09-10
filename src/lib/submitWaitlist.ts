@@ -5,13 +5,11 @@ export type WaitlistLead = {
 };
 
 /**
- * Placeholder submission adapter — identical in behaviour to the Taxation Laws &
- * Practice landing page it is cloned from. No lead-capture backend/CRM is wired
- * up for this programme yet; swap this implementation for a real API call once
- * one exists. It must not pretend to deliver the lead anywhere — it only resolves
- * so the UI can show a client-side confirmation after validation passes.
+ * No backend is connected yet. Reject instead of reporting a successful signup.
+ * When wired up, use getProgramDate(programConfig) at submission time for
+ * programm_date; payment confirmation must come from the payment integration.
  */
 export async function submitWaitlistLead(lead: WaitlistLead): Promise<{ ok: true }> {
   void lead;
-  return { ok: true };
+  throw new Error("Online registration is not available yet. Please contact VLS at +91 95002 07811 to register or join the waitlist.");
 }

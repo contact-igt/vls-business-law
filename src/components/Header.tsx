@@ -1,5 +1,6 @@
 "use client";
 
+import { useCourse } from "@/components/CourseProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -17,6 +18,7 @@ const NAV_LINKS = [
 const NAV_IDS = NAV_LINKS.map((l) => l.id);
 
 export function Header() {
+  const course = useCourse();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const activeId = useActiveSection(NAV_IDS);
@@ -77,7 +79,7 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <HeaderCta href="#waitlist">Join Waitlist</HeaderCta>
+          <HeaderCta href="#waitlist">{course.ctaLabel}</HeaderCta>
         </div>
 
         <button
@@ -137,7 +139,7 @@ export function Header() {
                 onClick={() => setOpen(false)}
                 className="mt-4 flex h-12 items-center justify-center bg-vls-black text-[14px] font-bold text-vls-white"
               >
-                Join Waitlist
+                {course.ctaLabel}
               </Link>
             </Container>
           </nav>

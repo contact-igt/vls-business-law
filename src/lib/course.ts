@@ -1,44 +1,37 @@
-/**
- * Single source of truth for all mutable commercial / programme data.
- *
- * No approved batch date, time, duration, price, delivery mode or language exists
- * for the DRT & SARFAESI Proceedings programme yet. Until VLS approves those
- * values, every unknown stays `"TBA"` and the page runs in waitlist mode. Do not
- * hard-code any of these strings inside components — read them from here.
- */
-export const course = {
-  name: "DRT & SARFAESI Proceedings",
-  subtitle: "Procedure & Practice",
+import { isRegistrationOpen } from "./programStatus";
 
-  // Commercial fields — none approved yet.
-  date: "TBA",
-  time: "TBA",
-  duration: "TBA",
-  price: null as string | null,
-  mode: "TBA",
-  language: "TBA",
+export const programConfig = {
+  sessionStatus: "announced",
+  classStartAt: "2026-09-20T10:30:00+05:30",
+  date: "Sunday, September 20, 2026",
+  time: "10:30 AM – 01:30 PM IST",
+};
 
-  // Registration
-  registrationMode: "WAITLIST" as const,
-  ctaLabel: "Join Waitlist",
-  secondaryCtaLabel: "Explore the Curriculum ↓",
-
-  // Copy that depends on the (unknown) commercial data
-  formBlurb:
-    "DRT & SARFAESI Proceedings · Procedure & Practice. Live-session dates and fee will be announced with the next registration window.",
-  bandBlurb:
-    "Procedure & Practice · Live-session dates & fee to be announced · Waitlist open",
-  successHeading: "You're on the waitlist.",
-  successBody:
-    "We'll send registration details for the next DRT & SARFAESI Proceedings session as soon as they're confirmed.",
-
-  // Hero metadata cards — value/label pairs. Values stay "To be announced" until approved.
-  heroMetaCards: [
-    { label: "Class Date", value: "To be announced" },
-    { label: "Class Time", value: "To be announced" },
-    { label: "Duration", value: "To be announced" },
-    { label: "Registration", value: "Waitlist Open" },
-  ] as const,
-} as const;
-
-export const isWaitlist = course.registrationMode === "WAITLIST";
+export function getCourse(now: number) {
+  const open = isRegistrationOpen(programConfig, now);
+  const date = open ? programConfig.date : "To be announced";
+  const time = open ? programConfig.time : "To be announced";
+  const schedule = open ? `${date} - ${time}` : "Date and time will be announced shortly";
+  return {
+    name: "DRT & SARFAESI Proceedings",
+    subtitle: "Procedure & Practice",
+    date,
+    time,
+    registrationMode: open ? "ACTIVE" : "WAITLIST",
+    ctaLabel: open ? "Register Now" : "Join Waitlist",
+    formHeading: open ? "Register Here" : "Join the Waitlist",
+    eyebrow: open ? "Registration Open" : "Early Access · Waitlist",
+    secondaryCtaLabel: "Explore the Curriculum ↓",
+    formBlurb: `DRT & SARFAESI Proceedings · Procedure & Practice. ${schedule}. Fee will be announced shortly.`,
+    bandBlurb: `Procedure & Practice · ${schedule} · ${open ? "Registration open" : "Waitlist open"}`,
+    nextClassAnswer: open
+      ? `The next class is on ${date}, from ${time}. Register for the upcoming session.`
+      : "The next session date and time will be announced shortly. Join the waitlist for updates.",
+    heroMetaCards: [
+      { label: "Class Date", value: date },
+      { label: "Class Time", value: time },
+      { label: "Duration", value: "3 Hours" },
+      { label: "Registration", value: open ? "Registration Open" : "Waitlist Open" },
+    ],
+  };
+}

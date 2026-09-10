@@ -1,9 +1,12 @@
+"use client";
+
 import { PrimaryLink, SecondaryLink } from "../ui/Button";
 import { Container } from "../ui/Container";
 import { WaitlistForm } from "../WaitlistForm";
-import { course } from "@/lib/course";
+import { useCourse } from "@/components/CourseProvider";
 
 export function Hero() {
+  const course = useCourse();
   return (
     <section id="top" className="relative overflow-hidden bg-vls-near-black pb-16 pt-14 md:pb-20">
       <div
@@ -92,9 +95,9 @@ export function Hero() {
           <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-vls-red to-vls-gold" />
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="eyebrow">Early Access · Waitlist</p>
+              <p className="eyebrow">{course.eyebrow}</p>
               <h2 className="mt-2 font-serif text-[24px] font-medium text-vls-black">
-                Join the Waitlist
+                {course.formHeading}
               </h2>
             </div>
           </div>
@@ -103,8 +106,6 @@ export function Hero() {
             <WaitlistForm
               formId="hero"
               submitLabel={course.ctaLabel}
-              successHeading={course.successHeading}
-              successBody={course.successBody}
             />
           </div>
         </div>

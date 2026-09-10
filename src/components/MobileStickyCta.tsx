@@ -1,7 +1,7 @@
 "use client";
 
 import { useHiddenNear } from "@/lib/useHiddenNear";
-import { course } from "@/lib/course";
+import { useCourse } from "@/components/CourseProvider";
 
 // Hide the bar while the hero (which carries its own waitlist form), the final
 // registration form, or the footer is on screen — so it never duplicates a
@@ -10,6 +10,7 @@ import { course } from "@/lib/course";
 const WATCH_IDS = ["top", "final-form", "site-footer"];
 
 export function MobileStickyCta() {
+  const course = useCourse();
   const near = useHiddenNear(WATCH_IDS);
 
   return (

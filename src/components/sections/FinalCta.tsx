@@ -1,16 +1,19 @@
+"use client";
+
 import { Container } from "../ui/Container";
 import { Reveal } from "../ui/Reveal";
 import { WaitlistForm } from "../WaitlistForm";
 import { DisputeJourneyVisual } from "../ui/DisputeJourneyVisual";
-import { course } from "@/lib/course";
+import { useCourse } from "@/components/CourseProvider";
 
 export function FinalCta() {
+  const course = useCourse();
   return (
     <section className="bg-vls-near-black py-20">
       <Container className="grid gap-10 md:grid-cols-2 md:gap-16">
         <Reveal>
           <p className="text-[11px] font-extrabold uppercase tracking-[1.8px] text-vls-gold">
-            Early Access · Waitlist
+            {course.eyebrow}
           </p>
           <h2 className="mt-4 font-serif text-[34px] font-medium leading-tight text-white md:text-[42px]">
             When a DRT or SARFAESI Matter Comes to You, Understand the Procedure and the Forum.
@@ -28,8 +31,6 @@ export function FinalCta() {
           <WaitlistForm
             formId="final"
             submitLabel={course.ctaLabel}
-            successHeading={course.successHeading}
-            successBody={course.successBody}
           />
         </Reveal>
       </Container>

@@ -21,10 +21,16 @@ import { WhoShouldAttend } from "@/components/sections/WhoShouldAttend";
 import { WhyVls } from "@/components/sections/WhyVls";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCta } from "@/components/sections/FinalCta";
+import { connection } from "next/server";
+import { CourseProvider } from "@/components/CourseProvider";
 
-export default function Home() {
+export default async function Home() {
+  await connection();
+  // Request-time server snapshot; connection() prevents build-time caching.
+  // eslint-disable-next-line react-hooks/purity
+  const initialNow = Date.now();
   return (
-    <>
+    <CourseProvider initialNow={initialNow}>
       <Header />
       <main className="flex-1">
         <Hero />
@@ -50,6 +56,6 @@ export default function Home() {
       </main>
       <Footer />
       <MobileStickyCta />
-    </>
+    </CourseProvider>
   );
 }

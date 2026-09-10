@@ -80,7 +80,7 @@ export function Testimonials() {
           <button type="button" aria-label="Next testimonials" className="rounded-full border border-vls-red px-5 py-2 text-vls-red" onClick={() => slider.current?.scrollBy({ left: slider.current.clientWidth, behavior: "smooth" })}>→</button>
         </div>
         <div className="mt-10 text-center">
-          <PrimaryLink href="#waitlist">{course.ctaLabel}</PrimaryLink>
+          <PrimaryLink href="#waitlist">{course.ctaLabelWithFee}</PrimaryLink>
         </div>
       </Container>
       <dialog

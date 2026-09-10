@@ -27,7 +27,7 @@ export function MobileStickyCta() {
           <p className="text-[10px] font-extrabold uppercase tracking-[1.4px] text-vls-red">
             DRT &amp; SARFAESI
           </p>
-          <p className="text-[13px] font-semibold text-vls-black">Procedure &amp; Practice</p>
+          <p className="text-[13px] font-semibold text-vls-black">{course.stickySubtitle}</p>
         </div>
         <a
           href="#final-form"

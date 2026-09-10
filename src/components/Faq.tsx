@@ -2,6 +2,13 @@
 
 import { useId, useState } from "react";
 import { useCourse } from "@/components/CourseProvider";
+import type { getCourse } from "@/lib/course";
+
+function answerFor(question: string, course: ReturnType<typeof getCourse>, fallback: string) {
+  if (question === "When is the next class?") return course.nextClassAnswer;
+  if (question === "What is the fee?") return course.feeAnswer;
+  return fallback;
+}
 
 const FAQS = [
   {
@@ -30,7 +37,7 @@ const FAQS = [
   },
   {
     q: "What is the fee?",
-    a: "The fee will be announced with the next registration window.",
+    a: "",
   },
 ];
 
@@ -76,7 +83,7 @@ export function Faq() {
               }`}
             >
               <div className="min-h-0 overflow-hidden" inert={!isOpen}>
-                <p className="pb-5 pr-10 text-[15px] leading-relaxed text-vls-muted">{item.q === "When is the next class?" ? course.nextClassAnswer : item.a}</p>
+                <p className="pb-5 pr-10 text-[15px] leading-relaxed text-vls-muted">{answerFor(item.q, course, item.a)}</p>
               </div>
             </div>
           </div>

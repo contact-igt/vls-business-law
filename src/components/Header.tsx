@@ -17,7 +17,7 @@ const NAV_LINKS = [
 
 const NAV_IDS = NAV_LINKS.map((l) => l.id);
 
-export function Header() {
+export function Header({ linkBase = "" }: { linkBase?: string }) {
   const course = useCourse();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -53,7 +53,7 @@ export function Header() {
       }`}
     >
       <Container className="flex h-[85px] items-center justify-between">
-        <Link href="#top" className="flex items-center gap-3">
+        <Link href={`${linkBase}#top`} className="flex items-center gap-3">
           <Image
             src="/assets/vls/brand/vls-logo.png"
             alt="VLS Law Academy"
@@ -67,7 +67,7 @@ export function Header() {
           {NAV_LINKS.map((link) => (
             <Link
               key={link.id}
-              href={`#${link.id}`}
+              href={`${linkBase}#${link.id}`}
               aria-current={activeId === link.id ? "true" : undefined}
               className={`text-[15px] transition-colors duration-150 ease-out hover:text-vls-red ${
                 activeId === link.id ? "text-vls-red" : "text-vls-black"
@@ -79,7 +79,7 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <HeaderCta href="#waitlist">{course.ctaLabel}</HeaderCta>
+          <HeaderCta href={`${linkBase}#waitlist`}>{course.ctaLabel}</HeaderCta>
         </div>
 
         <button
@@ -124,7 +124,7 @@ export function Header() {
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.id}
-                  href={`#${link.id}`}
+                  href={`${linkBase}#${link.id}`}
                   onClick={() => setOpen(false)}
                   aria-current={activeId === link.id ? "true" : undefined}
                   className={`border-b border-vls-border-alt py-3 text-[15px] ${
@@ -135,7 +135,7 @@ export function Header() {
                 </Link>
               ))}
               <Link
-                href="#waitlist"
+                href={`${linkBase}#waitlist`}
                 onClick={() => setOpen(false)}
                 className="mt-4 flex h-12 items-center justify-center bg-vls-black text-[14px] font-bold text-vls-white"
               >

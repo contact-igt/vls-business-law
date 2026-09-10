@@ -2,7 +2,7 @@
 
 import { PrimaryLink, SecondaryLink } from "../ui/Button";
 import { Container } from "../ui/Container";
-import { WaitlistForm } from "../WaitlistForm";
+import { RegistrationForm } from "../RegistrationForm";
 import { useCourse } from "@/components/CourseProvider";
 
 export function Hero() {
@@ -80,7 +80,7 @@ export function Hero() {
             className="hero-rise mt-8 flex flex-wrap items-center gap-6"
             style={{ animationDelay: "380ms" }}
           >
-            <PrimaryLink href="#waitlist">{course.ctaLabel}</PrimaryLink>
+            <PrimaryLink href="#waitlist">{course.ctaLabelWithFee}</PrimaryLink>
             <SecondaryLink href="#curriculum" dark>
               {course.secondaryCtaLabel}
             </SecondaryLink>
@@ -103,10 +103,7 @@ export function Hero() {
           </div>
           <p className="mt-2 text-[14px] leading-relaxed text-vls-muted">{course.formBlurb}</p>
           <div className="mt-6">
-            <WaitlistForm
-              formId="hero"
-              submitLabel={course.ctaLabel}
-            />
+            <RegistrationForm formId="hero" />
           </div>
         </div>
       </Container>

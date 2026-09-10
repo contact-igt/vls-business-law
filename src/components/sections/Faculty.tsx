@@ -8,19 +8,21 @@ export function Faculty() {
     <section id="faculty" className="bg-vls-off-white py-20">
       <Container className="grid gap-12 md:grid-cols-[280px_1fr] md:items-center">
         <Reveal>
-          <div className="relative mx-auto w-[220px] md:w-full">
-            <div
-              aria-hidden="true"
-              className="absolute inset-x-6 inset-y-8 -z-10 bg-vls-red"
-            />
-            <Image
-              src="/assets/vls/faculty/dr-sivakumar.png"
-              alt="Dr. Sivakumar Sivaprakasam"
-              width={720}
-              height={900}
-              className="w-full"
-              sizes="(min-width: 768px) 280px, 220px"
-            />
+          <div className="mx-auto w-[240px] bg-vls-off-white p-3 md:w-full md:max-w-[300px]">
+            <div className="relative pt-10">
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 top-10 bg-vls-red"
+              />
+              <Image
+                src="/assets/vls/faculty/dr-sivakumar.png"
+                alt="Dr. Sivakumar Sivaprakasam"
+                width={720}
+                height={900}
+                className="relative -mt-10 w-full"
+                sizes="(min-width: 768px) 280px, 240px"
+              />
+            </div>
           </div>
         </Reveal>
         <Reveal delayMs={80}>

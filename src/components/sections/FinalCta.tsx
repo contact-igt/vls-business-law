@@ -2,7 +2,7 @@
 
 import { Container } from "../ui/Container";
 import { Reveal } from "../ui/Reveal";
-import { WaitlistForm } from "../WaitlistForm";
+import { RegistrationForm } from "../RegistrationForm";
 import { DisputeJourneyVisual } from "../ui/DisputeJourneyVisual";
 import { useCourse } from "@/components/CourseProvider";
 
@@ -28,10 +28,7 @@ export function FinalCta() {
         </Reveal>
 
         <Reveal id="final-form" delayMs={100} className="bg-white p-7 sm:p-8">
-          <WaitlistForm
-            formId="final"
-            submitLabel={course.ctaLabel}
-          />
+          <RegistrationForm formId="final" />
         </Reveal>
       </Container>
     </section>

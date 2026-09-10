@@ -2,11 +2,30 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { getCourse, programConfig } from "@/lib/course";
+import { useUtmSource } from "@/lib/useUtmSource";
+import { clearPaymentDetails } from "@/lib/paymentStorage";
 
 const CourseContext = createContext<ReturnType<typeof getCourse> | null>(null);
 
-export function CourseProvider({ initialNow, children }: { initialNow: number; children: ReactNode }) {
+export function CourseProvider({
+  initialNow,
+  clearStoredPayment = true,
+  children,
+}: {
+  initialNow: number;
+  /** false on the response pages, which need to read the stored payload. */
+  clearStoredPayment?: boolean;
+  children: ReactNode;
+}) {
   const [now, setNow] = useState(initialNow);
+
+  useUtmSource();
+
+  // Clear any stale registration payload when the landing page loads.
+  useEffect(() => {
+    if (clearStoredPayment) clearPaymentDetails();
+  }, [clearStoredPayment]);
+
   useEffect(() => {
     const refresh = () => setNow(Date.now());
     const remaining = Date.parse(programConfig.classStartAt) - Date.now();

@@ -1,0 +1,52 @@
+{
+  "source": "https://aiforadvocates.vlslawacademy.com/",
+  "capturedVia": "getComputedStyle in-app browser inspection, 2026-08-19",
+  "colors": {
+    "--vls-red": "rgb(165, 31, 36)",
+    "--vls-red-tint": "rgba(165, 31, 36, 0.08)",
+    "--vls-red-gold-gradient": "linear-gradient(90deg, rgb(165,31,36), rgb(195,154,89))",
+    "--vls-black": "rgb(17, 19, 21)",
+    "--vls-near-black-alt": "rgb(13, 16, 18)",
+    "--vls-footer-black": "rgb(11, 13, 15)",
+    "--vls-white": "rgb(255, 255, 255)",
+    "--vls-off-white": "rgb(245, 241, 233)",
+    "--vls-card-bg": "rgb(237, 232, 222)",
+    "--vls-input-bg": "rgba(250, 248, 244, 0.78)",
+    "--border": "rgb(222, 215, 204)",
+    "--border-alt": "rgb(235, 227, 214)",
+    "--muted-text": "rgb(107, 105, 100)",
+    "--muted-text-alt": "rgb(85, 85, 85)",
+    "--gold-accent": "rgb(223, 185, 120)",
+    "--gold-accent-alt": "rgb(228, 191, 131)",
+    "--whatsapp-green": "rgb(37, 211, 102)",
+    "notes": "No blue/purple/neon anywhere on the reference. Gold is a rare accent (numerals, gradients on dark hero), never a primary surface. Red is reserved for CTAs, eyebrow labels, and emphasis strokes."
+  },
+  "typography": {
+    "headingFontFamily": "Georgia, 'Times New Roman', serif",
+    "bodyFontFamily": "Inter, ui-sans-serif, -apple-system, 'system-ui', 'Segoe UI', sans-serif",
+    "h1": { "fontSize": "79.36px (~clamp down on mobile)", "fontWeight": 500, "lineHeight": "76.98px", "letterSpacing": "-3.57px", "colorOnDarkHero": "white" },
+    "h2": { "fontSize": "51.2px", "fontWeight": 500, "lineHeight": "53.76px", "letterSpacing": "-1.79px" },
+    "h3": { "fontSize": "27px", "fontWeight": 500, "lineHeight": "40.5px", "letterSpacing": "normal" },
+    "body": { "fontSize": "18px", "fontWeight": 400, "lineHeight": "31.5px" },
+    "navLink": { "fontSize": "16px", "fontWeight": 400 },
+    "navGroupWeight": 650,
+    "eyebrow": { "fontSize": "10px", "fontWeight": 850, "letterSpacing": "1.8px", "color": "var(--vls-red)", "case": "UPPERCASE" },
+    "button": { "fontSize": "13-14px", "fontWeight": 750 }
+  },
+  "radii": {
+    "global": "0px — sharp corners everywhere (buttons, inputs, header, footer, cards). No rounded pills, no glassmorphism."
+  },
+  "components": {
+    "header": { "height": "85px", "background": "rgba(255,255,255,0.94)", "sticky": true, "containerWidth": "1180px", "innerHeight": "84px" },
+    "headerCta": { "background": "rgb(17,19,21)", "color": "white", "padding": "14px 20px", "height": "48px", "radius": "0px" },
+    "formPrimaryButton": { "background": "rgb(165,31,36)", "color": "white", "padding": "0 24px", "height": "48px", "radius": "0px", "fullWidthInForm": true },
+    "formInput": { "background": "rgba(250,248,244,0.78)", "border": "1px solid rgb(221,215,205)", "radius": "0px", "fontSize": "16px" },
+    "footer": { "background": "rgb(11,13,15)", "color": "white", "padding": "70px 0 22px" },
+    "sectionPadding": "~74px top / 86px bottom on desktop"
+  },
+  "layout": {
+    "containerMaxWidth": "1180px (header-inner measured); content sections track similar max-width",
+    "heroBackground": "dark near-black with faint grid pattern + soft gold radial glow",
+    "cardStyle": "borderless numbered list rows ('01' etc.) with top divider, not boxed/shadowed cards"
+  }
+}

@@ -1,0 +1,31 @@
+import { Container } from "../ui/Container";
+
+const FORUMS = [
+  "SARFAESI Act, 2002",
+  "SARFAESI Proceeding",
+  "Debt Recovery Tribunal",
+  "Debt Recovery Appellate Tribunal",
+];
+
+export function ForumStrip() {
+  return (
+    <section className="border-y border-vls-border bg-vls-card py-8">
+      <Container>
+        <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3">
+          {FORUMS.map((forum, i) => (
+            <li key={forum} className="flex items-center gap-3">
+              <span className="border border-vls-border bg-white px-3.5 py-2 text-[12.5px] font-semibold uppercase tracking-[0.6px] text-vls-black">
+                {forum}
+              </span>
+              {i < FORUMS.length - 1 && (
+                <span aria-hidden="true" className="text-vls-red">
+                  →
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </section>
+  );
+}

@@ -180,8 +180,7 @@ export function RegistrationForm({
       const orderResponse = await fetch("/api/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: 1 }),
-        // body: JSON.stringify({ amount: course.fee }),
+        body: JSON.stringify({ amount: course.fee }),
       });
       if (!orderResponse.ok) {
         const data = await orderResponse.json().catch(() => ({}));

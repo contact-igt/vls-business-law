@@ -64,6 +64,11 @@
   border-radius: 0 !important;
 }
 
+.testimonial-play-button,
+.testimonial-close-button {
+  border-radius: 50% !important;
+}
+
 html {
   scroll-behavior: smooth;
 }

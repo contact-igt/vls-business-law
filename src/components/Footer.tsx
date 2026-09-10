@@ -26,14 +26,10 @@ export function Footer() {
               <Image
                 src="/assets/vls/brand/vls-logo.png"
                 alt="VLS Law Academy"
-                width={36}
-                height={36}
+                width={88}
+                height={88}
+                className="shrink-0 bg-white p-2"
               />
-              <span className="font-serif text-[15px] font-medium leading-tight">
-                VLS Law
-                <br />
-                Academy
-              </span>
             </div>
             <p className="mt-5 max-w-xs text-[14px] leading-relaxed text-[#a5a5a1]">
               Practical legal knowledge for judicial services, law practice, and professional

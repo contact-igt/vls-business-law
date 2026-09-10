@@ -55,15 +55,10 @@ export function Header() {
           <Image
             src="/assets/vls/brand/vls-logo.png"
             alt="VLS Law Academy"
-            width={40}
-            height={40}
+            width={64}
+            height={64}
             priority
           />
-          <span className="font-serif text-[15px] font-medium leading-tight text-vls-black">
-            VLS Law
-            <br />
-            Academy
-          </span>
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">

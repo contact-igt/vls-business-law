@@ -80,7 +80,7 @@ export function Hero() {
             className="hero-rise mt-8 flex flex-wrap items-center gap-6"
             style={{ animationDelay: "380ms" }}
           >
-            <PrimaryLink href="#waitlist">{course.ctaLabelWithFee}</PrimaryLink>
+            <PrimaryLink href="#register-form">{course.ctaLabelWithFee}</PrimaryLink>
             <SecondaryLink href="#curriculum" dark>
               {course.secondaryCtaLabel}
             </SecondaryLink>
@@ -88,7 +88,7 @@ export function Hero() {
         </div>
 
         <div
-          id="waitlist"
+          id="hero-register-form"
           className="hero-rise relative bg-white p-7 sm:p-8"
           style={{ animationDelay: "180ms" }}
         >

@@ -79,7 +79,7 @@ export function Header({ linkBase = "" }: { linkBase?: string }) {
         </nav>
 
         <div className="hidden md:block">
-          <HeaderCta href={`${linkBase}#waitlist`}>{course.ctaLabel}</HeaderCta>
+          <HeaderCta href={`${linkBase}#register-form`}>{course.ctaLabel}</HeaderCta>
         </div>
 
         <button
@@ -135,7 +135,7 @@ export function Header({ linkBase = "" }: { linkBase?: string }) {
                 </Link>
               ))}
               <Link
-                href={`${linkBase}#waitlist`}
+                href={`${linkBase}#register-form`}
                 onClick={() => setOpen(false)}
                 className="mt-4 flex h-12 items-center justify-center bg-vls-black text-[14px] font-bold text-vls-white"
               >

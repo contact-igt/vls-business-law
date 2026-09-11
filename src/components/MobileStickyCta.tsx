@@ -3,11 +3,11 @@
 import { useHiddenNear } from "@/lib/useHiddenNear";
 import { useCourse } from "@/components/CourseProvider";
 
-// Hide the bar while the hero (which carries its own waitlist form), the final
+// Hide the bar while the hero (which carries its own registration form), the final
 // registration form, or the footer is on screen — so it never duplicates a
 // visible form, covers form fields, or sits over footer content. It only
 // appears once the reader has scrolled past the hero.
-const WATCH_IDS = ["top", "final-form", "site-footer"];
+const WATCH_IDS = ["top", "register-form", "site-footer"];
 
 export function MobileStickyCta() {
   const course = useCourse();
@@ -30,7 +30,7 @@ export function MobileStickyCta() {
           <p className="text-[13px] font-semibold text-vls-black">{course.stickySubtitle}</p>
         </div>
         <a
-          href="#final-form"
+          href="#register-form"
           className="flex h-11 min-w-[132px] shrink-0 items-center justify-center bg-vls-red px-5 text-[13px] font-bold text-vls-white transition-colors duration-150 ease-out hover:bg-vls-red-dark"
         >
           {course.ctaLabel}

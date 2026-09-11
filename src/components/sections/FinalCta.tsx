@@ -27,7 +27,7 @@ export function FinalCta() {
           </div>
         </Reveal>
 
-        <Reveal id="final-form" delayMs={100} className="bg-white p-7 sm:p-8">
+        <Reveal id="register-form" delayMs={100} className="bg-white p-7 sm:p-8">
           <RegistrationForm formId="final" />
         </Reveal>
       </Container>

@@ -15,7 +15,7 @@ export function EarlyCtaBand() {
           </p>
           <p className="mt-1.5 text-[14px] text-[#c8c8c4]">{course.bandBlurb}</p>
         </div>
-        <PrimaryLink href="#waitlist">{course.ctaLabel}</PrimaryLink>
+        <PrimaryLink href="#register-form">{course.ctaLabel}</PrimaryLink>
       </Container>
     </section>
   );

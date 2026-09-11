@@ -2,9 +2,9 @@ import { getRegistrationAction, isRegistrationOpen } from "./programStatus";
 
 export const programConfig = {
   sessionStatus: "announced",
-  classStartAt: "2026-09-20T10:30:00+05:30",
+  classStartAt: "2026-09-20T17:00:00+05:30",
   date: "Sunday, September 20, 2026",
-  time: "10:30 AM – 01:30 PM IST",
+  time: "05:00 PM – 08:00 PM IST",
 
   // Commercial — programme identity used by the registration payload.
   pageName: "drt-sarfaesi-proceedings",
